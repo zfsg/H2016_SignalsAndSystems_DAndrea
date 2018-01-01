@@ -1,0 +1,569 @@
+\documentclass[7pt,a4paper]{scrartcl}
+
+\usepackage[english]{babel}
+
+\input{../Headerfiles/Packages}
+\input{../Headerfiles/Titles}
+\input{../Headerfiles/Commands}
+\parindent 0pt
+
+\renewcommand{\baselinestretch}{1}
+
+\begin{document}
+
+\title{Signals and Systems}
+
+\author{GianAndrea Müller}
+
+\begin{multicols*}{4}
+
+\subsubsection*{Definitions}
+
+\important{$e^{Mt}=\mathbb{I}+Mt+\frac{(Mt)^2}{2!}+\cdots=\sum\limits_{k=0}^\infty\frac{((Mt)^k}{k!}$}
+
+\subsubsection*{Hold and Sample Operators}
+
+
+\begin{center}
+$G_d=SG_cH\quad\begin{bmatrix}\dot{q}(t)\\\dot{u}(t)\end{bmatrix}=\begin{bmatrix}A_c&B_c\\0&0\end{bmatrix}\cdot\begin{bmatrix}q(t)\\u(t)\end{bmatrix}=$\hlcyan{M}$\cdot\begin{bmatrix}q(t)\\u(t)\end{bmatrix}$
+\end{center}
+
+$u(t)=u[0]\quad 0\leq t<T_s\Rightarrow\dot{u}(t)\equiv0$ 
+
+$T_s^-$ just before sampling
+
+\begin{center}
+$\begin{bmatrix}q(T_s^-)\\u(T_s^-)\end{bmatrix}=F\begin{bmatrix}q(0)\\u(0)\end{bmatrix}$. with $F=e^{MT_s}$.
+
+\note{$A_d=F(1:n,1:n),\quad B_d=F(1:n,n+1:n+m)$
+
+$C_d=C_c,\quad D_d=D_c$.}
+\end{center}
+
+\importabflex{ll}{$q[n+1]$&$=A_dq[n]+B_du[n]$\\$y[n]$&$=C_dq[n]+D_du[n]$}
+
+\textbf{Euler:} $\dot{q}(t)\approx\frac{q(t+T_s)-q(t)}{T_s}=\frac{q[n+1]-q[n]}{T_s}$
+
+\note{Euler is good as long as $T_s$ is small.}
+
+\subsubsection*{Classification of Systems}
+
+\note{
+\begin{itemize}[leftmargin=*]
+\ncompaq
+\item \textbf{Memoryless}: $y[n]$ only depends on $u[n]$
+\item \textbf{Causal}: $y[n]$ only depends on past an present inputs.
+\item \textbf{Lin.}: $G\{\alpha_1u_1[n]+\alpha_2u_2[n]\}=\alpha_1G\{u_1[n]\}+\alpha_2G\{u_2[n]\}$
+\item \textbf{Time-invariant}
+
+$\{y_2[n]\}=\{y_1[n-k]\},\quad y_1=Gu_1,\ y_2=Gu_2,$
+
+$\{u_2[n]\}=\{u_1[n-k]\},\quad \forall\  k,u_1[n]$
+\end{itemize}}
+
+\subsubsection*{Stability of linear systems, BIBO}
+
+\textbf{Bounded sequence:} $u[n]:\ |u[n]|\leq M\ \forall\ n$ 
+
+\textbf{Stability:} $\exists M:\ |u[n]|\leq 1\ \forall\ n,\ |y[n]|\leq M$
+
+\textbf{BIBO:} Bounded input bounded output.
+
+\subsubsection*{Useful signals}
+
+\mportant{$\{\delta[n]\}:=\begin{cases}1&n=0\\0&n\neq 0\end{cases}\quad\{s[n]\}:=\begin{cases}1&n\geq 0\\0&n<0\end{cases}$}
+
+\small
+\begin{tabular}{lll}
+&Integration&Differentiation\\
+C&$s(t)=\int_{-\infty}^t\delta{\tau}d\tau$&$\ddt s(t)=\lim\limits_{\epsilon\rightarrow 0}\frac{s(t)-s(t-\epsilon)}{\epsilon}=\delta(t)$\\
+D&$s[n]=\sum\limits_{k=-\infty}^n\delta[k]$&$\{s[n]\}-\{s[n-1]\}=\{\delta[n]\}$
+\end{tabular}
+\normalsize
+
+\subsubsection*{Representing a sequence with impulses}
+
+\mbox{\note{
+$x[n]=\sum\limits_{k=-\infty}^\infty x[k]\delta[n-k]\ \forall n\quad\{x[n]\}=\sum\limits_{k=-\infty}^\infty x{k}\{\delta[n-k]\}$}}
+
+\subsubsection*{Convolution}
+
+\important{$x\ast h=\{x[n]\}\ast\{h[n]\}:=\sum\limits_{k=-\infty}^\infty x[k]\{h[n-k]\}$}
+
+$x\ast h=h\ast x\qquad (x\ast h_1)\ast h_2=x\ast (h_1\ast h_2)$ 
+
+$x\ast(h_1+h_2)=x\ast h_1+x\ast h_2$ 
+
+\finn
+
+$ x\ast\delta=x\qquad \{x[n]\}\ast\{\delta[n-n_0]\}=\{x[n-n_0]\}$
+
+$x\ast s=\{\sum\limits_{k=-\infty}^n x[k]\}\quad \{x[n]\}\ast\{s[n-n_0]\}=\{\sum\limits_{k=-\infty}^{n-n_0}x[k]\}$
+
+
+\subsubsection*{Step Response}
+
+\small
+$\{r[n]\}:=\{h[n]\}\ast\{s[n]\}=\sum\limits_{k=-\infty}^\infty h[k]\{s[n]\}=\{\sum\limits_{k=-\infty}^\infty h[k]\}$\normalsize
+
+$r[n]-r[n-1]=\sum\limits_{k=-\infty}^\infty h[k]-\sum\limits_{k=-\infty}^\infty h[k]=h[n],\ \forall\ n$
+
+\subsubsection*{Causality}
+
+\important{System is causal $\Leftrightarrow\ h[n]=0,\ \forall\ n<0$}
+
+\note{causal input: $u[n]: u[n]=0\ \forall\  n\leq 0$
+
+$ y[n]=\sum\limits_{k=0}^nu[k]h[n-k]=\sum\limits_{k=0}^n h[k]u[n-k],\ \forall n$}
+
+\subsubsection*{Stability of an LTI system}
+
+$\sum\limits_{k=-\infty}^\infty |h[k]|<\infty$
+
+\subsubsection*{LCCDE Definition}
+
+$\sum\limits_{k=0}^Na_ky[n-k]=\sum\limits_{k=0}^Mb_ku[n-k],\qquad a_k,b_k\in\mathbb{R}$
+
+\note{If the system is causal $(a_0\neq 0)$}
+
+\subsubsection*{Converting from LCCDE to state-space}
+
+SS: \begin{tabular}{r@{=}l}$q[n+1]$&$Aq[n]+Bu[n]$\\$y[n]$&$Cq[n]+Du[n]$\end{tabular}
+
+\note{
+$A=\begin{bmatrix}0&1&0&\cdot&0\\0&0&1&\cdot&0\\&&&\cdot\\&&&&1\\-a_N&-a_{N-1}&-a_{N-2}&\cdot&-a_1\end{bmatrix}\qquad B=\begin{bmatrix}0\\\cdot\\\cdot\\0\\b_0\end{bmatrix}$
+
+$C=\begin{bmatrix}-a_N&-a_{N-1}&-a_{N-2}&\cdot&-a_1\end{bmatrix}\qquad D=\begin{bmatrix}b_0\end{bmatrix}$ }
+
+\subsubsection*{Impulse response of a DT LTI system in SS}
+
+\important{$h=\{D,CB,CAB,\ldots,CA^{n-1}B,\ldots\}$}
+
+\subsubsection*{FIR vs. IIR}
+
+\importname{FIR}{$\exists N: h[n]=0\ \forall\ n\geq N$}
+
+\note{If a system can be written in non-recursive form it has a FIR.}
+
+\importname{Non-recursive Form}{$y[n]=\frac{1}{a_0}\sum\limits_{k=0}^Mb_ku[n-k]$}
+
+\subsubsection*{Periodicity constraint}
+
+$CT: \cos(\omega t)$ is periodic with $T=\frac{2\pi}{|\omega|}$, sampled with $T_s$ the resulting DT signal $\{x[n]\}=\{\cos(\Omega n)\}$ has the frequency \hlcyan{$\Omega=\omega T_s$} is periodic iff
+
+\mportant{$\frac{\Omega}{2\pi}=\frac{m}{N}$ for some integers $m,N$}
+
+\note{If $\frac{m}{N}$ is an irreducible fraction, then $N$ is the fundamental period of the signal.}
+
+\subsubsection*{Eigenfunctions of LTI Systems}
+
+
+\mportable{
+$\{y[n]\}=G\{z^n\}$&$=\sum\limits_{k=-\infty}^\infty h[k]\{z^{n-k}\}$\\
+\fbox{$H(z):=\sum\limits_{k=-\infty}^\infty h[k]z^{-k}$}&$\Leftarrow H(z)\{z^n\}$
+}
+
+
+
+\subsubsection*{The z-Transform}
+
+\important{$X(z):=\sum\limits_{n=-\infty}^\infty x[n]z^{-n},\quad z\in\mathbb{C}$}
+
+\begin{tabular}{@{$\bullet$ }lr@{ $\leftrightarrow$ }l}
+\note{Lin.}&$a_1\{x_1[n]\}+a_2\{x_2[n]\}$&$a_1X(z)+a_2X_2(z)$\\
+\note{T-shift.}&$\{x[n-1]\}$&$z^{-1}X(z)$\\
+\note{Conv.}&$\{x_1[n]\}\ast\{x_2[n]\}$&$X_1(z)\cdot X_2(z)$\\
+\note{Acc.}&$\{\sum\limits_{k=-\infty}^\infty x[k]\}$&$\frac{z}{z-1}X(z)$\\
+\note{Step}&$s[n]$&$\frac{z}{z-1}$
+\end{tabular}
+
+\note{\begin{center}{The z-Transform must also include the R.O.C. in order to uniquely specify the sequence in the time domain.}\end{center}}
+
+\subsubsection*{Transfer functions}
+
+\mportant{$\{y[n]\}=\{u[n]\}\ast\{h[n]\}\longleftrightarrow Y(z)=U(z)\cdot H(z)$}
+
+\mportant{$\sum\limits_{k=0}^Na_ky[n-k]=\sum\limits_{k=0}^Mb_ku[n-k]$}
+
+\important{$\frac{Y(z)}{U(z)}=\frac{b_0+b_1z^{-1}+\cdots+b_Mz^{-M}}{a_0+a_1z^{-1}+\cdots+a_Nz^{-}}=H(z)$}
+
+\important{$H(z)=\frac{Y(z)}{U(z)}=C(zI-A)^{-1}B+D$}
+
+\subsubsection*{Stability and causality}
+
+Given a transfer function $H(z)$, there exists a stable and causal interpretation for the underlying system iff all poles of $H(z)$ are inside the unit circle.
+
+\subsubsection*{DT Fourier Transform}
+
+\importname{\note{only absolutely summable signals}}{$\sum\limits_{n=-\infty}^\infty|x[n]|<\infty$}
+
+\important{$X(\Omega)=\mathcal{F}x:=\sum\limits_{n=-\infty}^\infty x[n]e^{-j\Omega n},\quad -\pi<\Omega\leq \pi$}
+
+\important{$\{x[n]\}=\mathcal{F}^{-1}X:=\{\frac{1}{2\pi}\int_{-\pi}^\pi X(\Omega)e^{j\Omega n} d\Omega\}$}
+
+\note{$z=e^{j\Omega},\quad X(z)=\sum\limits_{-\infty}^\infty x[n]z^{-n}$}
+
+\mportabflex{@{$\bullet$}l}{
+\note{Lin.}:$a_1\{x_1[n]\}+a_2\{x_2[n]\}\longleftrightarrow a_1X_1(\Omega)+a_2X_2(\Omega)$\\
+\note{Conv.}:$\{x_1[n]\}\ast\{x_2[n]\}\longleftrightarrow X_1(\Omega)\cdot X_2(\Omega)$\\
+\note{Parseval}:$\sum\limits_{-\infty}^\infty |x[n]|^2=\frac{1}{2\pi}\int_{-\pi}^\pi|X(\Omega)|^2 d\Omega$\\
+\note{Frequ-shift}:$e^{i\Omega_0 n}x[n]\longleftrightarrow X[\Omega-\Omega_0]$
+}
+
+\subsubsection*{Frequency Response of LTI Systems}
+
+\mportname{Frequency Response}{$H(\Omega)=\frac{Y(\Omega)}{U(\Omega)}$}
+
+\mportabflex{r@{ = }l}{
+$H(\Omega)$&$|H(\Omega)|e^{j\Theta_H(\Omega)}$\\
+$|Y(\Omega)|$&$|U(\Omega)||H(\Omega)|$\\
+$\Theta_Y(\Omega)$&$\Theta_U(\Omega)+\Theta_H(\Omega)$
+}
+
+\mportname{from LCCDE}{$H(\Omega)=\left.H(z)\right|_{z=e^{j\Omega}}$}
+
+\subsubsection*{Response to complex exponential sequences}
+
+$\{u[n]\}=\{z^n\}=\{e^{j\Omega_0n}\}$
+
+\mportabflex{r@{ = }l}{
+$\{y[n]\}$&$G\{z^n\}=H(z)\{z^n\}$\\
+$\rightarrow y[n]$&$H(z=e^{j\Omega_0)e^{j\Omega_0 n}=H(\Omega=\Omega_0)e^{j\Omega_0 n}}$\\
+&$|H(\Omega_0)|e^{j(\Omega_0 n+\Omega_H(\Omega_0))}$
+}
+
+\subsubsection*{Response to real sinusoids}
+
+$y=Gu=G(u_1+ju_2)=Gu_1+jGu_2=y_1+jy_2$
+
+\mportabflex{r@{ = }l}{$u[n]$&$e^{j\Omega_0n}\Rightarrow u_1[n]=\cos(\Omega_0 n)$\\
+$y[n]$&$H(\Omega_0)e^{j\Omega_0 n}=|H(\Omega_0)|e^{j(\Omega_0 n+\Theta_H(\Omega_0))}$\\
+$y_1[n]$&$|H(\Omega_0)|\cos(\Omega_0 n+\Theta_H(\Omega_0))$
+}
+
+\subsubsection*{DFS representation of a periodic signal}
+
+\important{$x[n]=\frac{1}{N}\sum\limits_{k=0}^{N-1}X[k]e^{jk\frac{2\pi}{N}n}\qquad X[k]=\sum\limits_{n=0}^{N-1}x[n]e^{-jk\frac{2\pi}{N}n}$}
+
+$\frac{1}{N}\sum\limits_{n=0}^{N-1}e^{j(r-k)\frac{2\pi}{N}n}=\begin{cases}1&\text{for } r-k = mN,m\in\mathbb{Z}\\0&\text{otherwise}\end{cases}$
+
+\begin{itemize}
+\ncompaq
+\item $a_1\{x_1[n]\}+a_2\{x_2[n]\}\leftrightarrow a_1\{X_1[k]\}+a_2\{X_2[k]\}$
+\item Parseval's theorem: $\sum\limits_{n=0}^{N-1}|x[n]|^2=\frac{1}{N}\sum\limits_{k=0}^{N-1}|X[k]|^2$
+\end{itemize}
+
+\subsubsection*{DFS coefficients of a real signal}
+
+\importname{\note{To proove start with: $X[N-\lambda]$...}}{$X[N-k]=X^\ast[k]$}
+
+\mportant{$X[N]=X^\ast[0]\quad X[N]=X[0]\Rightarrow X[0]=X^\ast[0]$}
+
+\mportant{If $N$ is even $X[N/2]$ is always real. $X[N-N/2]=X[N/2]=X^\ast[N/2]$}
+
+\subsubsection*{Response to Complex Exponential Sequences}
+
+\mportant{$\{\frac{1}{N}\sum\limits_{k=0}^{N-1}Y[k]e^{jk\frac{2\pi}{N}n}\}=G\{\frac{1}{N}\sum\limits_{k=0}^{N-1}U[k]e^{jk\frac{2\pi}{N}n}\}$}
+
+\important{$Y[k]=H(e^{jk\frac{2\pi}{N}})U[K]$}
+
+\subsubsection*{Relation between DFS and DT FT}
+
+\note{$x[n]=\frac{1}{N}\sum\limits_{k=0}^{N-1}X[k]e^{jk\frac{2\pi}{N}n}$\fbox{$X(\Omega)=\frac{2\pi}{N}\sum\limits_{k=0}^{N-1}X[k]\delta(\Omega-k\frac{2\pi}{N})$}}
+
+\subsubsection*{Discrete Fourier Transform (DFT)}
+
+\mportname{sequence of finite length N}{$\{x[n]\}$}
+
+\mportname{periodic extension of $\{x[n]\}$}{$x_e[n]=x[n\mod N]\ \forall\ n$}
+
+See DFS!
+
+\subsubsection*{DFT of Non-Periodic Signals}
+
+\important{$\{x[n]\}=\{e^{j\Omega_0n}\}\Leftrightarrow X(\Omega)=2\pi\delta(\Omega-\Omega_0)$}
+
+\note{If $\Omega_0$ is an integer multiple of $\frac{2\pi}{N}$, $\exists k_0\in[0,N-1]:k_0\frac{2\pi}{N}=\Omega_0\Rightarrow X[k_0]$ is located at the location of the delta function and captures all of the signals power.}
+
+If that is not true the coefficient \glqq overflows\grqq:
+
+\subsubsection*{Example: $N=10,\ \Omega_0=\frac{\pi}{3}$}
+
+\note{$\Omega_0$ is not a multiple of $\frac{2\pi}{10}$}
+
+Even though the signal is periodic, choosing N wrongly leads to a periodic extension that involves many different frequencies instead of only $\pi/3$.
+
+Parceval indicates that the energy in the frequency $\pi/3$ has to be conserved when transformed.
+
+\subsubsection*{Aliasing}
+
+Sampling uniformly: $x(t)=e^{j\omega t}\Rightarrow x[n]=\{e^{j\omega T_s n}\}$
+
+When uniformly sampling $x(t)=e^{j(\omega+\frac{2\pi k}{T_s})t}$:
+
+$\{x[n]\}={x(n T_s)}=\{e^{j(\omega+\frac{2\pi k}{T_s})n T_s}\}=\{e^{j\omega n T_s}\underbrace{e^{jn2\pi}}_{=1}\}$
+
+\dahe Different frequencies map to one and the same!
+
+\importname{Allowed frequency range}{$-\frac{\pi}{T_s}<\omega<\frac{\pi}{T_s}$}
+
+\importname{Nyquist frequency}{$\omega_N=\frac{\pi}{T_s}=\pi f_s\quad f_N=\frac{\omega_N}{2\pi}=\frac{f_s}{2}$}
+
+\subsubsection*{Non-causal filtering with causal filters}
+
+\note{
+\begin{itemize}
+\item G causal, LTI filter with TF $H(z)$
+\item $\tilde{G}$ anti-causal LTI filter with TF $H(z^{-1})$
+\end{itemize}
+}
+
+\mportant{$Y(e^{j\Omega}=H(e^{j\Omega})H(e^{j\Omega})U(e^{j\Omega}=|H(e^{j\Omega})|^2U(e^{j\Omega)}|$}
+
+\subsubsection*{Non-Linear Filter: Median}
+
+$y[n]=$\verb+median+$(u[n-M/2],\ldots,u[n],\ldots,u[n+M/2])$
+
+\subsubsection*{FIR filters}
+
+\begin{minipage}[t]{0.55\linewidth}
+\important{$y[n]=\sum\limits_{k=0}^{M-1}b_k u[n-k]$}
+\note{FIR = $h=\{b_0,b_1,\ldots,b_{M-1}\}$
+\end{minipage}
+\begin{minipage}[t!]{0.4\linewidth}
+These filters are absolutely stable because h is absolutely summable.}
+\end{minipage}
+
+\subsubsection*{Moving Average Filter}
+
+\sbs{0.45}{0.45}{\important{$y[n]=\frac{1}{M}\sum\limits_{k=0}^{M-1}u[n-k]$}}{\important{$H(\Omega)=\frac{1}{M}\frac{(1-e^{j\Omega M})}{(1-e^{-j\Omega})}$}}
+
+\note{$H(\Omega)=0$ iff $\Omega = 2\pi k/M$}
+
+\sbss{\important{$\angle(H(\Omega))\approx -\frac{\Omega(M-1)}{2}$}
+
+\note{exact until 1. zero of $H(\Omega)$.}}{
+\important{$|H(\Omega)|=\frac{\sin^2(\frac{\Omega M}{2})}{M^2\sin^2(\frac{\Omega}{2})}$}}
+
+\importname{\note{$\frac{\sin(x)}{x}=\sinc(x)$}}{\small $\left|\frac{\sinc(\frac{\Omega M}{2})}{\sinc(\frac{\Omega}{2})}\right|\approx|\sinc(\frac{\Omega}{2})|$ \note{for small $\Omega$.}\normalsize}
+
+\subsubsection*{Non-Causal Moving Average Filter}
+
+\important{$h=\{\ldots,0,\frac{1}{M},\ldots,\underset{\uparrow}{\frac{1}{M}},\ldots,\frac{1}{M},0,\ldots\}$}
+
+\mportant{$H(\Omega)=\frac{1}{M}\sum\limits_{k=0}^{M-1}e^{-j\Omega(k-\frac{M-1}{2})}=e^{j\Omega(\frac{M-1}{2})}H_{MA}(\Omega)$}
+
+\subsubsection*{Non-Causal Weighted Moving Average Filter}
+
+\important{$h[n]=\frac{1}{S}\tilde{h}[n]$ for all times n, where $S=\sum\limits_{k=-\infty}^\infty \tilde{h}[n]$}
+
+\sbss{\note{Results in a LP with zero-phase.}}{\importname{Phase delay}{$-\angle(H(\Omega))/\Omega$}}
+
+\subsubsection*{Differentiation using FIR Filters}
+
+\note{
+\mportabflex{l@{$\approx$}l@{\hspace{0pt}}|@{\hspace{0pt}}l}{
+1: $y(t)$&$\frac{u(t)-u(t-\tau)}{\tau}$&$y_C[n]=\frac{1}{T_s}(u[n]-u[n-1])$\\
+2: $y(t)$&$\frac{u(t+\tau)-u(t)}{\tau}$&$y_A[n]=\frac{1}{T_s}(u[n+1]-u[n])$\\
+3: $y(t)$&$\frac{u(t+\tau)-u(t-\tau)}{2\tau}$&$y_N[n]=\frac{1}{2T_s}(u[n+1]-u[n-1])$
+}
+\vspace{-2ex}
+1. causal$\quad$ 2. anti-causal$\quad$ 3. non-causal
+}
+
+\subsubsection*{IIR-Filters: First Order Low Pass Filter}
+
+\mportable{$y[n]=\alpha y[n-1]+(1-\alpha)u[n]$ \\ $H(z)=\frac{1-\alpha}{1-\alpha z^{-1}}\qquad H(\Omega)=\frac{1-\alpha}{1-\alpha e^{-j\Omega}}$}
+
+How much time does it take $y[n]$ to decay to the value $e^{-1}$? Supposing $y[0]=1$ and $u[n]=0$.
+
+$y[n]=\alpha^n\Rightarrow \alpha=e^{-\frac{1}{n}}\qquad n=\frac{T_0}{T_s}\Rightarrow \alpha=e^{-\frac{T_s}{T_0}}$
+
+\note{$T_0$ is the desired drop time to $e^{-1}$}
+
+\subsubsection*{IIR Filters: CT Butterworth filter design}
+
+\important{$H(s)=\frac{1}{\prod\limits_{k=1}^K(s-s_k)}$}
+
+To get a differenct cutoff frequency $s\rightarrow\frac{s}{\omega_c}$
+
+\subsubsection*{Bilinear Transform}
+
+\important{$s=\frac{2}{T_s}\left(\frac{z-1}{z+1}\right)\qquad z=\frac{1+s\frac{T_s}{2}}{1-s\frac{T_s}{2}}$}
+
+\subsubsection*{Designing a HP filter in CT}
+
+\importname{Only works for ideal filters}{$H_{HP}=1-H_{LP}$}
+
+\important{$H_{HPI}(\omega)=H_{LPI}(-1/\omega)=\begin{cases}0&0\leq|\omega|\leq\omega_c\\1&\omega_c<|\omega|\end{cases}$}
+
+\subsubsection*{Designing a HP filter in DT}
+
+\important{$z=-z$}
+
+\note{Maps unit circle to itself, the inside to the inside for stability, $\Omega=0\rightarrow \Omega_n=\pi$ and vice versa.}
+
+DT design process:
+\begin{enumerate}
+\ncompaq
+\item Given: desired HP corner $\Omega_c$
+\item design DT LP filter with corner $\pi-\Omega_c$
+\item calculate $H_{HP}(z)=H_{LP}(-z)$
+\end{enumerate}
+
+\subsubsection*{Band-Pass Filter Design}
+
+\mportname{If ideal!}{$H_{BPI}=H_{LPI}(\omega)H_{HPI}(\omega)$}
+
+\importname{for $\omega_1/\omega_0\gg1$}{$H_{BP}(s)=H_{LP}(s)H_{HP}(s)$}
+
+\subsubsection*{Low-pass to band-pass filter transformation in CT}
+
+\begin{enumerate}[leftmargin=*]
+\ncompaq
+\item given passband $\omega_0\leq\omega\leq\omega_1$
+\item design LP with corner $\omega_c=\omega_1-\omega_0$
+\item $H_{BP}=H_{LP}(s\rightarrow\frac{s^2+\omega_s^2}{s})$ where $\omega_s=\sqrt{\omega_0\omega_1}$
+\end{enumerate}
+
+\subsubsection*{Band-Stop Filter Design}
+
+\mportname{if ideal!}{$H_{BSI}(\omega)=H_{LPI}(\omega)+H_{HPI}(\omega)$}
+
+\importname{for $\omega_1/\omega_0\gg 1$}{$H_{BS}(s)=H_{LP}(s)+H_{HP}(s)$}
+
+\subsubsection*{High-Pass to Band-Stop Filter Transformation in CT}
+
+\begin{enumerate}[leftmargin=*]
+\ncompaq
+\item given passband $\omega_0\leq\omega\leq\omega_1$
+\item design HP with corner $\omega_c=\omega_1-\omega_0$
+\item $H_{BS}=H_{HP}(s\rightarrow\frac{s^2+\omega_s^2}{s})$ where $\omega_s=\sqrt{\omega_0\omega_1}$
+\end{enumerate}
+
+\subsubsection*{Notch Filter Design}
+
+\important{$H_{NO}(s)=\frac{s^2+\omega_c^2}{s^2+\sqrt{2}\omega_c s+\omega_c^2}$}
+
+\subsubsection*{Pre-Warping}
+
+\importname{\note{Warped $\omega_c$, sampling period $T_s$}}{$\bar{\omega}_c=\frac{2}{T_s}\tan\left(\frac{\omega_cT_s}{2}\right)$}
+
+\subsubsection*{Identification without noise}
+
+\begin{enumerate}[leftmargin=*]
+\compaq
+\item Let $\{u_e[n]\}=\{\delta[n]\}$
+\item Then $\{y_m[n]\}=\{h[n]\}$ and $H(\Omega)=\sum\limits_{n=0}^\infty y_m[n]e^{j\Omega n}$
+\end{enumerate}
+
+\mportant{$Y_m[k]=\sum\limits_{n=0}^{N-1}y_m[n]e^{-j\frac{2\pi k}{N}n}$}
+
+\important{$\hat{H}(\Omega_k):=Y_m[k]=H(\Omega_k)-\underbrace{\sum\limits_{n=N}^{\infty}h[n]e^{j\Omega_k n}}_{H_N(\Omega_k)}$}
+
+\subsubsection*{Identification using Sinusoidal Inputs}
+
+\mportant{$y_m=Gu_e+y_d$}
+
+\note{$u_e[n]=e^{j\frac{2\pi}{N}ln}\quad n=0,1,.,N_T+N-1\quad \Omega_l=2\pi l/N$.
+
+\mportant{$y_e[n]=H(\Omega_l)u_e[n]+e_e[n],\quad n\geq N_T$}
+
+\mportabflex{l@{ = }l}{
+$Y_e[l]$&$\sum\limits_{n=N_T}^{N_T+N-1}y_e[n]e^{-j\frac{2\pi}{N}ln}$\\
+$U_e[l]$&$\sum\limits_{n=N_T}^{N_T+N-1}u_e[n]e^{-j\frac{2\pi}{N}ln}$\\
+$E_e[l]$&$\sum\limits_{n=N_T}^{N_T+N-1}e_e[n]e^{-j\frac{2\pi}{N}ln}$
+}}
+
+\mportant{$Y_e[l]=H(\Omega_l)U_e[l]+E_e[l]$}
+
+\note{where $E_e[l]\rightarrow 0$ as $N_T\rightarrow\infty$}
+
+\mportabflex{l@{ = }l}{
+$Y_m[l]$&$\sum\limits_{n=N_T}^{N_T+N-1}y_m[n]e^{-j\frac{2\pi}{N}ln}$\\
+$Y_d[l]$&$\sum\limits_{n=N_T}^{N_T+N-1}y_d[n]e^{-j\frac{2\pi}{N}ln}$
+}
+
+\mportant{$\hat{H}(\Omega_l):=\frac{Y_m[l]}{U_e[l]}=H(\Omega_l)+\frac{E_e[l]}{N}+\frac{Y_d[l]}{N}$}
+
+\mportant{$\expe{\hat{H}(\Omega_l)-H(\Omega_l)}=\frac{E_e[l]}{N}$}
+
+\note{which approaches zero as $\N_T\rightarrow \infty$}
+
+\mportant{$\expe{|\hat{H}(\Omega_l)-H(\Omega_l)|^2}=\frac{E_e^2[l]}{N^2}+\frac{\sigma_y^2}{N}$}
+
+\subsubsection*{Experimental Procedure}
+
+\begin{itemize}[leftmargin=*]
+\ncompaq
+\item Choose $N_T$ large enough to let transient die down. Large N \dahe long experiments but smaller error.
+\item Chose $l,\quad \Omega_l=\frac{2\pi l}{N}$
+\item Calculate $Y_m[l]=\sum\limits_{n=N_T}^{N_T+N-1}y_m[n]e^{-j\Omega_l}$ and
+
+$U_e[l]=\sum\limits_{n=N_t}^{N_T+N_1}u_e[n]e^{-j\Omega_ln}=\frac{NA}{2}$
+\item $\hat{H}(\Omega_l):=\frac{Y_m[l]}{U_e[l]}$
+\end{itemize}
+
+\subsubsection*{Identifying the Transfer Function}
+
+\sbss{\mportant{$H(z)=\frac{\sum\limits_{k=0}^{B-1}b_kz^{-k}}{1+\sum\limits_{k=1}^{A-1}a_kz^{-k}}$}}{\mportant{$H(\Omega)=\frac{\sum\limits_{k=0}^{B-1}b_ke^{-j\Omega k}}{1+\sum\limits_{k=1}^{A_1}a_ke^{-j\Omega k}}$}}
+
+Setting $\hat{H}(\Omega_l)=H(\Omega_l)$ at all measurement frequencies yields:
+
+\mportant{\note{$\left(1+a_1e^{-j\Omega_l}+\cdots+a_{A-1}e^{-j(A-1)\Omega_k}\right)\hat{H}(\Omega_l)=b_0+b_1e^{-j\Omega_l}+\cdots+b_{B-1}e^{-j(B-1)\Omega_l}$}}
+
+This gives two times l linear equations once for the real and once for the imaginary part.
+
+\note{$R_l\cos(\phi_l)+a_1R_l\cos(\phi_l-\Omega_l)+\cdots+a_{A-1}R_l\cos(\phi_l-(A-1)\Omega_l)$
+$=b_0+b_1\cos(\Omega_l)+\cdots+b_{B-1}\cos((B-1)\Omega_l)$
+
+\finn
+
+$R_l\sin(\phi_l)+a_1R_l\sin(\phi_l-\Omega_l)+\cdots+a_{A-1}R_l\sin(\phi_l-(A-1)\Omega_l)$
+
+$=-b_1\sin(\Omega_l)-\cdots-b_{B-1}\sin((B-1)\Omega_l)$
+}
+
+This system of equations can be converted to the least squares problem of minimizing:
+
+\mportant{$(F\Theta - G)^T(F\Theta-G)$}
+
+\note{where $\Theta =\begin{bmatrix}a_1&a_2&\cdots&a_{A-1}&b_0&b_1&\cdots&b_{B-1}\end{bmatrix}$
+
+$\Theta$ size (A+B-1) vector, unkown.
+
+$F$ size $(2L)\times(A+B-1)$ matrix, known.
+
+$G$ size $(2L)$ vector, known.
+}
+
+\important{$\Theta^\ast=(F^TF)^{-1}F^TG$}
+
+\mportname{Weighted least squares}{$F\Theta=G\Rightarrow WF\Theta=WG$}
+
+\mportant{$W=\text{diag}(w_0,w_0,w_1,w_,\cdots,w_L)$}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{multicols*}
+
+\end{document}

@@ -1,0 +1,96 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Discretization of CT Signals \& Systems}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Hold and Sample Operators}{2}{subsection.1.1}
+\contentsline {section}{\numberline {2}Classification of Systems}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Stability of linear systems, BIBO}{2}{subsection.2.1}
+\contentsline {section}{\numberline {3}LTI System response to Inputs}{2}{section.3}
+\contentsline {subsection}{\numberline {3.1}Impulse response of a system}{2}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}Useful signals}{2}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Representing a sequence with inpulses}{2}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Response to arbitrary inputs}{2}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}Convolution}{2}{subsubsection.3.1.4}
+\contentsline {subsection}{\numberline {3.2}Step Response}{2}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Causality}{3}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Stability of an LTI system}{3}{subsection.3.4}
+\contentsline {section}{\numberline {4}Linear constant coefficient difference equations}{3}{section.4}
+\contentsline {subsection}{\numberline {4.1}Definition}{3}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Converting from LCCDE to state-space}{3}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Impulse response of a DT LTI system in SS}{3}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Finite Impulse Response (FIR) vs. Infinite Impulse Response (IIR)}{3}{subsection.4.4}
+\contentsline {section}{\numberline {5}Periodic signals}{3}{section.5}
+\contentsline {subsection}{\numberline {5.1}Periodicity constraint}{3}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Eigenfunctions of LTI Systems}{3}{subsection.5.2}
+\contentsline {section}{\numberline {6}The z-Transform}{3}{section.6}
+\contentsline {subsection}{\numberline {6.1}Convergence and non-uniqueness}{3}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Transfer functions of LTI systems}{3}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Transfer function from LCCDE}{3}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Transfer function from SS}{3}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Stability and causality}{4}{subsection.6.5}
+\contentsline {section}{\numberline {7}Fourier Transform}{4}{section.7}
+\contentsline {subsection}{\numberline {7.1}DT Fourier Transform}{4}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}Definition}{4}{subsubsection.7.1.1}
+\contentsline {subsection}{\numberline {7.2}Inverse DT Fourier Transform}{4}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Properties of the DT Fourier Transform}{4}{subsection.7.3}
+\contentsline {section}{\numberline {8}Frequency Response of LTI Systems}{4}{section.8}
+\contentsline {subsection}{\numberline {8.1}Frequency response from LCCDE}{4}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Response to complex exponential sequences}{4}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Response to real sinusoids}{4}{subsection.8.3}
+\contentsline {section}{\numberline {9}Discrete Fourier Series / Transform}{4}{section.9}
+\contentsline {subsection}{\numberline {9.1}DFS representation of a periodic signal}{4}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Properties}{4}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.3}DFS coefficients of a real signal}{4}{subsection.9.3}
+\contentsline {subsection}{\numberline {9.4}Response to Complex Exponential Sequences}{4}{subsection.9.4}
+\contentsline {subsection}{\numberline {9.5}Relation between DFS and the DT Fourier Transform}{4}{subsection.9.5}
+\contentsline {subsection}{\numberline {9.6}Discrete Fourier Transform (DFT)}{4}{subsection.9.6}
+\contentsline {subsection}{\numberline {9.7}DFT of Non-Periodic Signals}{4}{subsection.9.7}
+\contentsline {subsubsection}{\numberline {9.7.1}Example: $N=10,\ \Omega _0=\frac {\pi }{3}$}{5}{subsubsection.9.7.1}
+\contentsline {subsection}{\numberline {9.8}Effect of Causal Inputs}{5}{subsection.9.8}
+\contentsline {section}{\numberline {10}Aliasing}{5}{section.10}
+\contentsline {section}{\numberline {11}Filtering}{5}{section.11}
+\contentsline {subsection}{\numberline {11.1}White Noise}{5}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}White noise from PDF}{5}{subsection.11.2}
+\contentsline {subsubsection}{\numberline {11.2.1}Uniform Distribution}{5}{subsubsection.11.2.1}
+\contentsline {subsubsection}{\numberline {11.2.2}Normal Distribution}{5}{subsubsection.11.2.2}
+\contentsline {subsection}{\numberline {11.3}Main Types of filters}{5}{subsection.11.3}
+\contentsline {subsection}{\numberline {11.4}Non-Causal Filtering}{5}{subsection.11.4}
+\contentsline {subsubsection}{\numberline {11.4.1}Non-causal filtering with causal filters}{5}{subsubsection.11.4.1}
+\contentsline {subsection}{\numberline {11.5}Non-Linear Filter: Median}{5}{subsection.11.5}
+\contentsline {subsection}{\numberline {11.6}Anti-Aliasing}{5}{subsection.11.6}
+\contentsline {subsubsection}{\numberline {11.6.1}Corner frequency}{5}{subsubsection.11.6.1}
+\contentsline {section}{\numberline {12}FIR filters}{5}{section.12}
+\contentsline {subsection}{\numberline {12.1}Moving Average Filter}{6}{subsection.12.1}
+\contentsline {subsubsection}{\numberline {12.1.1}Phase response}{6}{subsubsection.12.1.1}
+\contentsline {subsubsection}{\numberline {12.1.2}Magnitude response}{6}{subsubsection.12.1.2}
+\contentsline {subsection}{\numberline {12.2}Weighted Moving average Filter}{6}{subsection.12.2}
+\contentsline {subsection}{\numberline {12.3}Non-Causal Moving Average Filter}{6}{subsection.12.3}
+\contentsline {subsection}{\numberline {12.4}Phase is Important}{6}{subsection.12.4}
+\contentsline {subsection}{\numberline {12.5}Differentiation using FIR Filters}{6}{subsection.12.5}
+\contentsline {section}{\numberline {13}Infinite Impulse Response Filters}{6}{section.13}
+\contentsline {subsection}{\numberline {13.1}First Order Low Pass Filter}{6}{subsection.13.1}
+\contentsline {subsubsection}{\numberline {13.1.1}Design Considerations}{6}{subsubsection.13.1.1}
+\contentsline {subsubsection}{\numberline {13.1.2}Connection to CT systems}{6}{subsubsection.13.1.2}
+\contentsline {section}{\numberline {14}IIR Filter Design}{6}{section.14}
+\contentsline {subsection}{\numberline {14.1}CT Butterworth filter design}{6}{subsection.14.1}
+\contentsline {subsection}{\numberline {14.2}Bilinear Transform}{7}{subsection.14.2}
+\contentsline {subsubsection}{\numberline {14.2.1}Motivation}{7}{subsubsection.14.2.1}
+\contentsline {subsubsection}{\numberline {14.2.2}DT-CT frequency mapping}{7}{subsubsection.14.2.2}
+\contentsline {subsection}{\numberline {14.3}Overview: Discretization methods}{7}{subsection.14.3}
+\contentsline {section}{\numberline {15}Applied Concepts}{7}{section.15}
+\contentsline {subsection}{\numberline {15.1}High-Pass Filter Design}{7}{subsection.15.1}
+\contentsline {subsection}{\numberline {15.2}Designing a HP filter in CT}{7}{subsection.15.2}
+\contentsline {subsection}{\numberline {15.3}Designing a HP filter in DT}{7}{subsection.15.3}
+\contentsline {subsection}{\numberline {15.4}Band-Pass Filter Design}{7}{subsection.15.4}
+\contentsline {subsection}{\numberline {15.5}Low-pass to band-pass filter transformation in CT}{8}{subsection.15.5}
+\contentsline {subsection}{\numberline {15.6}Band-Stop Filter Design}{8}{subsection.15.6}
+\contentsline {subsection}{\numberline {15.7}High-Pass to Band-Stop Filter Transformation in CT}{8}{subsection.15.7}
+\contentsline {subsection}{\numberline {15.8}Notch Filter Design}{8}{subsection.15.8}
+\contentsline {subsection}{\numberline {15.9}Frequency Warping and the Bilinear Transform}{8}{subsection.15.9}
+\contentsline {section}{\numberline {16}System Identification}{8}{section.16}
+\contentsline {subsection}{\numberline {16.1}Frequency domain system identification}{9}{subsection.16.1}
+\contentsline {subsubsection}{\numberline {16.1.1}Identification without noise}{9}{subsubsection.16.1.1}
+\contentsline {subsubsection}{\numberline {16.1.2}Identification with noise}{9}{subsubsection.16.1.2}
+\contentsline {subsection}{\numberline {16.2}Identification using Sinusoidal Inputs}{9}{subsection.16.2}
+\contentsline {subsubsection}{\numberline {16.2.1}Experimental Procedure}{9}{subsubsection.16.2.1}
+\contentsline {subsubsection}{\numberline {16.2.2}Closed-loop System Identification}{9}{subsubsection.16.2.2}
+\contentsline {subsection}{\numberline {16.3}Identifying the Transfer Function}{9}{subsection.16.3}
+\contentsline {subsubsection}{\numberline {16.3.1}Weighted least squares}{10}{subsubsection.16.3.1}
